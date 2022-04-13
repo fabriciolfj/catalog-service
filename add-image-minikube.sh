@@ -1,0 +1,1 @@
+minikube image load catalog-service --profile minikube
