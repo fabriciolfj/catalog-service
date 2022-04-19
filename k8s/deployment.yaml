@@ -5,6 +5,7 @@ metadata:
   labels:
     app: catalog-service
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: catalog-service
@@ -17,6 +18,10 @@ spec:
         - name: catalog-service
           image: catalog-service
           imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                command: ["sh", "-c", "sleep 5"]
           ports:
             - containerPort: 9001
           env:
@@ -26,3 +31,5 @@ spec:
               value: jdbc:postgresql://polar-postgres/polardb_catalog
             - name: SPRING_PROFILES_ACTIVE
               value: testdata
+            - name: SPRING_CLOUD_CONFIG_URI
+              value: http://config-service
