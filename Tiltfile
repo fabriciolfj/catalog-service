@@ -1,5 +1,5 @@
 custom_build(
-    ref = 'catalog-service-v2',
+    ref = 'catalog-service',
     command = './gradlew bootBuildImage --imageName $EXPECTED_REF',
     deps = ['build.gradle', 'src']
 )
