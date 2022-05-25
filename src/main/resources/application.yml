@@ -13,7 +13,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:8080/auth/realms/PolarBookshop
+          #issuer-uri: http://localhost:8080/auth/realms/PolarBookshop
+          jwk-set-uri: http://localhost:8080/auth/realms/PolarBookshop/protocol/openid-connect/certs
   lifecycle:
     timeout-per-shutdown-phase: 15s
   application:
