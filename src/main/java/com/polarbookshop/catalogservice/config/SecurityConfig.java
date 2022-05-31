@@ -31,7 +31,7 @@ public class SecurityConfig {
         return http
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(EndpointRequest.toAnyEndpoint()).permitAll()
-                        .mvcMatchers(HttpMethod.GET, "/", "/books/**").permitAll()
+                        .mvcMatchers(HttpMethod.GET, "/", "/books/**", "**/actuator/**").permitAll()
                         .anyRequest().hasRole("employee"))
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
