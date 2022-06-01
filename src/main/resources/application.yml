@@ -44,13 +44,20 @@ management:
   endpoints:
     web:
       exposure:
-        include: health
+        include: health, metrics, prometheus, flyway, heapdump, info
   endpoint:
     health:
       show-components: always
       show-details: always
       probes:
         enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
 
 polar:
   greeting: Welcome to the local book catalog!
+
+logging:
+  pattern:
+    level: "%5p [${spring.application.name},%X{trace_id},%X{span_id}]"
