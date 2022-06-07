@@ -1,0 +1,10 @@
+polar:
+  greeting: teste2
+spring:
+  datasource:
+    url: jdbc:postgresql://polar-postgres/polardb_catalog
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://polar-keycloak/auth/realms/PolarBookshop/protocol/openid-connect/certs
