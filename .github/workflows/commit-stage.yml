@@ -95,9 +95,10 @@ jobs:
           docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} \
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-      - name: Render deployment File
-        run: |
-          IMAGE_TAG=${{ env.VERSION }}
-          export IMAGE_TAG
-          # Render simple template from environment variables.
-          envsubst < k8s/deployment.yaml > k8s/deployment.yaml
+      - name: Render Deployment YAML
+        uses: nowactions/envsubst@v1
+        with:
+          input: ./k8s/deployment.yaml
+          output: ./k8s/deployment.yaml
+        env:
+          IMAGE_TAG: ${{ env.VERSION }}
