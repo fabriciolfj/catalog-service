@@ -33,6 +33,12 @@ jobs:
           output: ./k8s/deployment.yaml
         env:
           IMAGE_TAG: ${{ env.VERSION }}
+      - uses: danielr1996/envsubst-action@1.0.0
+        env:
+          IMAGE_TAG: ${{ env.VERSION }}
+        with:
+          input: deployment.yaml
+          output: k8s/deployment.yaml
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
