@@ -39,15 +39,6 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
-      - name: Validate kubernetes manifests
-        uses: stefanprodan/kube-tools@v1
-        with:
-          kubectl: 1.23.1
-          kubeval: 0.16.1
-          command: |
-            kustomize build k8s | kubeval --strict -
-      - name: Switch to staging cluster
-        run: kubectl config use-context staging
       - uses: swdotcom/update-and-apply-kubernetes-configs@v1
         with:
           k8-config-file-paths: |
