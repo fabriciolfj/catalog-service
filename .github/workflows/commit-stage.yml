@@ -43,6 +43,12 @@ jobs:
         run: |
           envsubst < ./deployment.yaml  > ./k8s/deployment.yaml
           cat ./k8s/deployment.yaml
+      - uses: 1arp/create-a-file-action@0.2
+        with:
+          path: 'k8s'
+          file: 'deployment.yaml'
+          content: |
+            cat ./k8s/deployment.yaml
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
