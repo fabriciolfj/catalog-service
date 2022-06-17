@@ -37,11 +37,11 @@ jobs:
         env:
           IMAGE_TAG: ${{ env.VERSION }}
         with:
-          input: deployment.yaml
-          output: k8s/deployment.yaml
+          input: ./deployment.yaml
+          output: ./k8s/deployment.yaml
       - name: Turn off Maintenance
         run: |
-          IMAGE_TAG=${{ env.VERSION }} envsubst < deployment.yml  > k8s/deployment.yaml
+          IMAGE_TAG=${{ env.VERSION }} envsubst < ./deployment.yml  > ./k8s/deployment.yaml
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
