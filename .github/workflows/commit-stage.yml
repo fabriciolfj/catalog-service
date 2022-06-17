@@ -51,7 +51,9 @@ jobs:
               "patterns": [".+.yaml"],
               "files": ["deployment.yaml"],
               "depth": 2
-            }
+      - name: Turn off Maintenance
+        run: |
+          IMAGE_TAG=${{ env.VERSION }} envsubst < deployment.yml  > k8s/deployment.yaml
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
