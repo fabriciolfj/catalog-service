@@ -49,7 +49,7 @@ jobs:
       - name: Update values.yaml
         uses: fjogeleit/yaml-update-action@main
         with:
-          valueFile: 'deployment.yaml'
+          valueFile: 'k8s/deployment.yaml'
           propertyPath: 'file.version'
           value: ${{ env.VERSION }}
           commitChange: false
