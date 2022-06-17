@@ -34,12 +34,6 @@ jobs:
           output: ./k8s/deployment.yaml
         env:
           IMAGE_TAG: ${{ env.VERSION }}
-      - uses: danielr1996/envsubst-action@1.0.0
-        env:
-          IMAGE_TAG: ${{ env.VERSION }}
-        with:
-          input: ./deployment.yaml
-          output: ./k8s/deployment.yaml
       - name: Turn off Maintenance
         run: |
           IMAGE_TAG=${{ env.VERSION }} envsubst < ./deployment.yaml  > ./k8s/deployment.yaml
