@@ -39,13 +39,6 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
-      - uses: swdotcom/update-and-apply-kubernetes-configs@v1
-        with:
-          k8-config-file-paths: |
-            k8s/deployment.yaml
-          replacement-method: defined
-        env:
-          IMAGE_TAG: ${{ github.sha }}
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
@@ -95,3 +88,10 @@ jobs:
           docker tag ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }} \
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
           docker push ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
+      - uses: swdotcom/update-and-apply-kubernetes-configs@v1
+        with:
+          k8-config-file-paths: |
+            k8s/deployment.yaml
+          replacement-method: defined
+        env:
+          IMAGE_TAG: ${{ github.sha }}
