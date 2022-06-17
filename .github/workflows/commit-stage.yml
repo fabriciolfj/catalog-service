@@ -30,10 +30,10 @@ jobs:
       - name: Turn off Maintenance
         run: |
           IMAGE_TAG=${{ env.VERSION }} envsubst < ./deployment.yaml  > ./k8s/deployment.yaml
-        - uses: "finnp/create-file-action@master"
-            env:
-              FILE_NAME: "k8s/deployment.yaml"
-              FILE_DATA: cat ./k8s/deployment.yaml
+      - uses: "finnp/create-file-action@master"
+         env:
+           FILE_NAME: "k8s/deployment.yaml"
+           FILE_DATA: cat ./k8s/deployment.yaml
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
