@@ -29,8 +29,8 @@ jobs:
       - name: Render Deployment YAML
         uses: nowactions/envsubst@v1
         with:
-          input: ./deployment.yaml
-          output: ./k8s/deployment.yaml
+          input: deployment.yaml
+          output: k8s/deployment.yaml
         env:
           IMAGE_TAG: ${{ env.VERSION }}
   package:
