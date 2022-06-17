@@ -46,6 +46,14 @@ jobs:
           kubeval: 0.16.1
           command: |
             kustomize build k8s | kubeval --strict -
+      - name: Update values.yaml
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          valueFile: 'deployment.yaml'
+          propertyPath: 'file.version'
+          value: ${{ env.VERSION }}
+          commitChange: false
+          updateFile: true
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
