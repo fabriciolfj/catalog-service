@@ -29,7 +29,7 @@ jobs:
           ./gradlew build
       - name: Turn off Maintenance
         run: |
-          IMAGE_TAG=${{ env.VERSION }} envsubst < ./deployment.yaml  > ./k8s/deployment.yaml
+          IMAGE_TAG=${{ env.VERSION }} envsubst < ./deployment.yaml  > k8s/deployment.yaml
       - uses: "finnp/create-file-action@master"
          env:
            FILE_NAME: "k8s/deployment.yaml"
