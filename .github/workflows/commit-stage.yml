@@ -27,13 +27,6 @@ jobs:
         run: |
           chmod +x gradlew
           ./gradlew build
-      - name: Render Deployment YAML
-        uses: nowactions/envsubst@v1
-        with:
-          input: ./deployment.yaml
-          output: ./k8s/deployment.yaml
-        env:
-          IMAGE_TAG: ${{ env.VERSION }}
       - name: Turn off Maintenance
         run: |
           IMAGE_TAG=${{ env.VERSION }} envsubst < ./deployment.yaml  > ./k8s/deployment.yaml
