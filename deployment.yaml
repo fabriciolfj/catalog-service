@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: catalog-service
-          image: fabricio211/catalog-service:${IMAGE_TAG}
+          image: fabricio211/catalog-service:${env.VERSION}
           imagePullPolicy: IfNotPresent
           lifecycle:
             preStop:
