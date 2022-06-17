@@ -98,6 +98,6 @@ jobs:
       - name: Render deployment File
         run: |
           IMAGE_TAG=${{ env.VERSION }}
-          export IMAGE
+          export IMAGE_TAG
           # Render simple template from environment variables.
-          envsubst  k8s/deployment.yaml
+          envsubst < k8s/deployment.yaml
