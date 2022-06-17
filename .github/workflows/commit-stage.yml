@@ -100,4 +100,4 @@ jobs:
           IMAGE_TAG=${{ env.VERSION }}
           export IMAGE_TAG
           # Render simple template from environment variables.
-          envsubst < k8s/deployment.yaml
+          envsubst < k8s/deployment.yaml > k8s/deployment.yaml
