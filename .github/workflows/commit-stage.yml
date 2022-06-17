@@ -5,7 +5,7 @@ env:
   REGISTRY: docker.io
   IMAGE_NAME: fabricio211/catalog-service
   VERSION: ${{ github.sha }}
-  FILE: ""
+  FILE:
 
 jobs:
   build:
