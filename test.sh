@@ -1,2 +1,2 @@
-test=$(./teste.txt)
+test=$(<teste.txt)
 echo $test
