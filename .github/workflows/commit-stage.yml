@@ -38,8 +38,8 @@ jobs:
         env:
           IMAGE_TAG: ${{ env.VERSION }}
         with:
-          in-file: deployment.yaml
-          out-file: k8s/deployment.yaml
+          in-file: ./deployment.yaml
+          out-file: ./k8s/deployment.yaml
   package:
     name: Package and Publish
     if: ${{ github.ref == 'refs/heads/main' }}
