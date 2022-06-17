@@ -52,7 +52,7 @@ jobs:
           valueFile: 'k8s/deployment.yaml'
           propertyPath: 'file.version'
           value: ${{ env.VERSION }}
-          commitChange: false
+          commitChange: true
           updateFile: true
   package:
     name: Package and Publish
