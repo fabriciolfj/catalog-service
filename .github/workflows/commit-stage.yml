@@ -39,18 +39,6 @@ jobs:
         with:
           input: deployment.yaml
           output: k8s/deployment.yaml
-      - name: Test action
-        uses: Slidem/inplace-envsubst-action@v1.2.2
-        env:
-          IMAGE_TAG: ${{ env.VERSION }}
-        with:
-          working-directory: k8s
-          fail-on-missing-variables: "true"
-          search_input: |
-            {
-              "patterns": [".+.yaml"],
-              "files": ["deployment.yaml"],
-              "depth": 2
       - name: Turn off Maintenance
         run: |
           IMAGE_TAG=${{ env.VERSION }} envsubst < deployment.yml  > k8s/deployment.yaml
